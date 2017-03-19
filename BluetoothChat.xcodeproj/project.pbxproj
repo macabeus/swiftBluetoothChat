@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		89E9869A1E79753400350756 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E986991E79753400350756 /* AppDelegate.swift */; };
-		89E9869C1E79753400350756 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E9869B1E79753400350756 /* ViewController.swift */; };
+		89E9869C1E79753400350756 /* BluetoothListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E9869B1E79753400350756 /* BluetoothListViewController.swift */; };
 		89E9869F1E79753400350756 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89E9869D1E79753400350756 /* Main.storyboard */; };
 		89E986A11E79753400350756 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89E986A01E79753400350756 /* Assets.xcassets */; };
 		89E986A41E79753400350756 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89E986A21E79753400350756 /* LaunchScreen.storyboard */; };
+		89E986AC1E7975FB00350756 /* ChatCB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E986AB1E7975FB00350756 /* ChatCB.swift */; };
+		89E986AE1E7A6B8000350756 /* CellChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E986AD1E7A6B8000350756 /* CellChat.swift */; };
+		89E986B31E7A813E00350756 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E986B21E7A813E00350756 /* ChatViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		89E986961E79753400350756 /* BluetoothChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluetoothChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89E986991E79753400350756 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		89E9869B1E79753400350756 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		89E9869B1E79753400350756 /* BluetoothListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothListViewController.swift; sourceTree = "<group>"; };
 		89E9869E1E79753400350756 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		89E986A01E79753400350756 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		89E986A31E79753400350756 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89E986A51E79753400350756 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89E986AB1E7975FB00350756 /* ChatCB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCB.swift; sourceTree = "<group>"; };
+		89E986AD1E7A6B8000350756 /* CellChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellChat.swift; sourceTree = "<group>"; };
+		89E986B21E7A813E00350756 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +61,40 @@
 			isa = PBXGroup;
 			children = (
 				89E986991E79753400350756 /* AppDelegate.swift */,
-				89E9869B1E79753400350756 /* ViewController.swift */,
+				89E986AF1E7A805700350756 /* ViewController */,
+				89E986AB1E7975FB00350756 /* ChatCB.swift */,
 				89E9869D1E79753400350756 /* Main.storyboard */,
 				89E986A01E79753400350756 /* Assets.xcassets */,
 				89E986A21E79753400350756 /* LaunchScreen.storyboard */,
 				89E986A51E79753400350756 /* Info.plist */,
 			);
 			path = BluetoothChat;
+			sourceTree = "<group>";
+		};
+		89E986AF1E7A805700350756 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				89E986B01E7A806900350756 /* BluetoothListViewController */,
+				89E986B11E7A807000350756 /* ChatViewController */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		89E986B01E7A806900350756 /* BluetoothListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				89E9869B1E79753400350756 /* BluetoothListViewController.swift */,
+				89E986AD1E7A6B8000350756 /* CellChat.swift */,
+			);
+			name = BluetoothListViewController;
+			sourceTree = "<group>";
+		};
+		89E986B11E7A807000350756 /* ChatViewController */ = {
+			isa = PBXGroup;
+			children = (
+				89E986B21E7A813E00350756 /* ChatViewController.swift */,
+			);
+			name = ChatViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +170,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89E9869C1E79753400350756 /* ViewController.swift in Sources */,
+				89E9869C1E79753400350756 /* BluetoothListViewController.swift in Sources */,
+				89E986AE1E7A6B8000350756 /* CellChat.swift in Sources */,
+				89E986AC1E7975FB00350756 /* ChatCB.swift in Sources */,
+				89E986B31E7A813E00350756 /* ChatViewController.swift in Sources */,
 				89E9869A1E79753400350756 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
