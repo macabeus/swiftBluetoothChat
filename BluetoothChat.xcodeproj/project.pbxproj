@@ -8,18 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		89D377941E7E96A7006FF8B4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D377931E7E96A7006FF8B4 /* Constants.swift */; };
+		89D377961E7E98F2006FF8B4 /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D377951E7E98F2006FF8B4 /* ChatList.swift */; };
+		89D377981E7E98FC006FF8B4 /* ChatRoomPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D377971E7E98FC006FF8B4 /* ChatRoomPeripheral.swift */; };
+		89E4EF1E1E7EA9F70090BC06 /* ChatRoomHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E4EF1D1E7EA9F70090BC06 /* ChatRoomHost.swift */; };
+		89E4EF211E7EB4390090BC06 /* ChatRoomDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E4EF201E7EB4390090BC06 /* ChatRoomDelegate.swift */; };
 		89E9869A1E79753400350756 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E986991E79753400350756 /* AppDelegate.swift */; };
 		89E9869C1E79753400350756 /* BluetoothListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E9869B1E79753400350756 /* BluetoothListViewController.swift */; };
 		89E9869F1E79753400350756 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89E9869D1E79753400350756 /* Main.storyboard */; };
 		89E986A11E79753400350756 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89E986A01E79753400350756 /* Assets.xcassets */; };
 		89E986A41E79753400350756 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89E986A21E79753400350756 /* LaunchScreen.storyboard */; };
-		89E986AC1E7975FB00350756 /* ChatCB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E986AB1E7975FB00350756 /* ChatCB.swift */; };
+		89E986AC1E7975FB00350756 /* CentralBluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E986AB1E7975FB00350756 /* CentralBluetooth.swift */; };
 		89E986AE1E7A6B8000350756 /* CellChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E986AD1E7A6B8000350756 /* CellChat.swift */; };
 		89E986B31E7A813E00350756 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E986B21E7A813E00350756 /* ChatViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		89D377931E7E96A7006FF8B4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		89D377951E7E98F2006FF8B4 /* ChatList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
+		89D377971E7E98FC006FF8B4 /* ChatRoomPeripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoomPeripheral.swift; sourceTree = "<group>"; };
+		89E4EF1D1E7EA9F70090BC06 /* ChatRoomHost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoomHost.swift; sourceTree = "<group>"; };
+		89E4EF201E7EB4390090BC06 /* ChatRoomDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoomDelegate.swift; sourceTree = "<group>"; };
 		89E986961E79753400350756 /* BluetoothChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluetoothChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89E986991E79753400350756 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89E9869B1E79753400350756 /* BluetoothListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothListViewController.swift; sourceTree = "<group>"; };
@@ -27,7 +35,7 @@
 		89E986A01E79753400350756 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		89E986A31E79753400350756 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89E986A51E79753400350756 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		89E986AB1E7975FB00350756 /* ChatCB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCB.swift; sourceTree = "<group>"; };
+		89E986AB1E7975FB00350756 /* CentralBluetooth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CentralBluetooth.swift; sourceTree = "<group>"; };
 		89E986AD1E7A6B8000350756 /* CellChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellChat.swift; sourceTree = "<group>"; };
 		89E986B21E7A813E00350756 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -43,6 +51,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		89E4EF1F1E7EB4270090BC06 /* ChatRoom */ = {
+			isa = PBXGroup;
+			children = (
+				89E4EF201E7EB4390090BC06 /* ChatRoomDelegate.swift */,
+				89D377971E7E98FC006FF8B4 /* ChatRoomPeripheral.swift */,
+				89E4EF1D1E7EA9F70090BC06 /* ChatRoomHost.swift */,
+			);
+			name = ChatRoom;
+			sourceTree = "<group>";
+		};
 		89E9868D1E79753400350756 = {
 			isa = PBXGroup;
 			children = (
@@ -64,7 +82,9 @@
 			children = (
 				89E986991E79753400350756 /* AppDelegate.swift */,
 				89E986AF1E7A805700350756 /* ViewController */,
-				89E986AB1E7975FB00350756 /* ChatCB.swift */,
+				89E986AB1E7975FB00350756 /* CentralBluetooth.swift */,
+				89D377951E7E98F2006FF8B4 /* ChatList.swift */,
+				89E4EF1F1E7EB4270090BC06 /* ChatRoom */,
 				89D377931E7E96A7006FF8B4 /* Constants.swift */,
 				89E9869D1E79753400350756 /* Main.storyboard */,
 				89E986A01E79753400350756 /* Assets.xcassets */,
@@ -174,9 +194,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				89E9869C1E79753400350756 /* BluetoothListViewController.swift in Sources */,
+				89E4EF1E1E7EA9F70090BC06 /* ChatRoomHost.swift in Sources */,
+				89D377961E7E98F2006FF8B4 /* ChatList.swift in Sources */,
 				89E986AE1E7A6B8000350756 /* CellChat.swift in Sources */,
-				89E986AC1E7975FB00350756 /* ChatCB.swift in Sources */,
+				89E986AC1E7975FB00350756 /* CentralBluetooth.swift in Sources */,
 				89E986B31E7A813E00350756 /* ChatViewController.swift in Sources */,
+				89D377981E7E98FC006FF8B4 /* ChatRoomPeripheral.swift in Sources */,
+				89E4EF211E7EB4390090BC06 /* ChatRoomDelegate.swift in Sources */,
 				89E9869A1E79753400350756 /* AppDelegate.swift in Sources */,
 				89D377941E7E96A7006FF8B4 /* Constants.swift in Sources */,
 			);

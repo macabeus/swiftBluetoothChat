@@ -20,6 +20,7 @@ import CoreBluetooth
 class BluetoothListViewController: UIViewController {
     
     @IBOutlet weak var tableChats: UITableView!
+    var chatList: ChatList?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,42 +28,37 @@ class BluetoothListViewController: UIViewController {
         tableChats.delegate = self
         tableChats.dataSource = self
         
-        ChatCB.shared.delegate = self
+        chatList = ChatList(delegate: self)
     }
     
     @IBAction func btnCreateChatRoom(_ sender: Any) {
-        ChatCB.shared.createChatServices()
+        self.performSegue(withIdentifier: "segueChat", sender: nil)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueChat" {
-            ChatCB.shared.stopScan()
+            CentralBluetooth.shared.stopScan()
             
-            //let destination = segue.destination as! ChatViewController
+            let destination = segue.destination as! ChatViewController
+            if let chatRoomPeripheral = sender as? ChatRoomPeripheral {
+                destination.chatRoomPeripheral = chatRoomPeripheral
+            }
         }
     }
 }
 
-extension BluetoothListViewController: ChatCBDelegate {
-    func newPeripheralDiscoved(_ peripheral: CBPeripheral) {
+extension BluetoothListViewController: ChatListDelegate {
+    func newPeripheralDiscoved() {
         tableChats.reloadData()
     }
     
-    func connectPeripheralSucceeded(_ peripheral: CBPeripheral) {
-        self.performSegue(withIdentifier: "segueChat", sender: self)
+    func connectChatRoomSucceeded(chatRoomPeripheral: ChatRoomPeripheral) {
+        self.performSegue(withIdentifier: "segueChat", sender: chatRoomPeripheral)
     }
     
-    func connectPeripheralFailed(_ peripheral: CBPeripheral, error: Error?) {
+    func connectChatRoomFailed(error: Error?) {
         // TODO: mostrar um alerta na UI
         print(error ?? "error unknown")
-    }
-    
-    func createPeripheralSucceeded(_ peripheralManager: CBPeripheralManager) {
-        self.performSegue(withIdentifier: "segueChat", sender: self)
-    }
-    
-    func receivedMessage(_ message: String) {
-        print("receivedMessage")
     }
 }
 
@@ -72,13 +68,13 @@ extension BluetoothListViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ChatCB.shared.peripheralsList.count
+        return CentralBluetooth.shared.peripheralsList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellChat", for: indexPath) as! CellChat
         
-        let currentPeripheral = ChatCB.shared.peripheralsList[indexPath.row]
+        let currentPeripheral = CentralBluetooth.shared.peripheralsList[indexPath.row]
         if currentPeripheral.name != "" {
             cell.labelChatName.text = currentPeripheral.name
         } else {
@@ -89,8 +85,8 @@ extension BluetoothListViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let peripheralSelected = ChatCB.shared.peripheralsList[indexPath.row]
+        let peripheralSelected = CentralBluetooth.shared.peripheralsList[indexPath.row]
         
-        ChatCB.shared.connect(in: peripheralSelected)
+        chatList!.connect(in: peripheralSelected)
     }
 }

@@ -13,17 +13,29 @@ class ChatViewController: UIViewController {
     
     @IBOutlet weak var textFieldMessage: UITextField!
     @IBOutlet weak var textViewChatLog: UITextView!
+    var chatRoomPeripheral: ChatRoomPeripheral?
+    var chatRoomHost: ChatRoomHost?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        ChatCB.shared.delegate = self
+        if let chatRoomPeripheral = chatRoomPeripheral {
+            chatRoomPeripheral.delegate = self
+        } else {
+            chatRoomHost = ChatRoomHost()
+            chatRoomHost!.delegate = self
+        }
     }
 
     @IBAction func buttonSendMessage(_ sender: Any) {
         let message = textFieldMessage.text!
-        ChatCB.shared.sendMessage(message)
         appendChatLog(message)
+        
+        if let chatRoomPeripheral = chatRoomPeripheral {
+            chatRoomPeripheral.sendMessage(message)
+        } else if let chatCBHostRoom = chatRoomHost {
+            chatCBHostRoom.sendMessage(message)
+        }
     }
     
     func appendChatLog(_ text: String) {
@@ -32,24 +44,12 @@ class ChatViewController: UIViewController {
 
 }
 
-extension ChatViewController: ChatCBDelegate {
-    func newPeripheralDiscoved(_ peripheral: CBPeripheral) {
-        print("newPeripheralDiscoved")
-    }
-    
-    func connectPeripheralSucceeded(_ peripheral: CBPeripheral) {
-        print("connectPeripheralSucceeded")
-    }
-    
-    func connectPeripheralFailed(_ peripheral: CBPeripheral, error: Error?) {
-        print("connectPeripheralFailed")
-    }
-    
-    func createPeripheralSucceeded(_ peripheralManager: CBPeripheralManager) {
-        print("createPeripheralSucceeded")
-    }
-    
+extension ChatViewController: ChatRoomDelegate {
     func receivedMessage(_ message: String) {
         appendChatLog(message)
+    }
+    
+    func chatLoadFinish() {
+        print("CHAT PRONTO PARA USAR!")
     }
 }
