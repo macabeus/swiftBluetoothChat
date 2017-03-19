@@ -27,7 +27,7 @@ class ChatCB: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, CBPeriph
     weak var delegate: ChatCBDelegate?
     var peripheralsList: [CBPeripheral] = [] // todo: talvez seja melhor ser um set?
     let characteristicChatGlobal = CBMutableCharacteristic(
-        type: CBUUID(string: "2222"),
+        type: CBUUID.characteristicChatMessage,
         properties: [.notify, .read, .write],
         value: nil,
         permissions: [.readable, .writeable]
@@ -143,7 +143,7 @@ class ChatCB: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, CBPeriph
     func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
         print("state: \(peripheral.state)")
         
-        let serviceUUID = CBUUID(string: "1111")
+        let serviceUUID = CBUUID.serviceChat
         let service = CBMutableService(type: serviceUUID, primary: true)
         
         service.characteristics = [characteristicChatGlobal]
@@ -164,7 +164,7 @@ class ChatCB: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, CBPeriph
     }
     
     func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveRead request: CBATTRequest) {
-        if request.characteristic.uuid.isEqual(CBUUID(string: "2222")) {
+        if request.characteristic.uuid.isEqual(CBUUID.characteristicChatMessage) {
             print("lendo...")
             // Set the correspondent characteristic's value
             // to the request
@@ -177,7 +177,7 @@ class ChatCB: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, CBPeriph
     
     func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {
         for request in requests {
-            if request.characteristic.uuid.isEqual(CBUUID(string: "2222")) {
+            if request.characteristic.uuid.isEqual(CBUUID.characteristicChatMessage) {
                 print("escrevendo...")
                 // Set the request's value
                 // to the correspondent characteristic

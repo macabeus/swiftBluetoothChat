@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89D377941E7E96A7006FF8B4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D377931E7E96A7006FF8B4 /* Constants.swift */; };
 		89E9869A1E79753400350756 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E986991E79753400350756 /* AppDelegate.swift */; };
 		89E9869C1E79753400350756 /* BluetoothListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E9869B1E79753400350756 /* BluetoothListViewController.swift */; };
 		89E9869F1E79753400350756 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89E9869D1E79753400350756 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		89D377931E7E96A7006FF8B4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		89E986961E79753400350756 /* BluetoothChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluetoothChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89E986991E79753400350756 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89E9869B1E79753400350756 /* BluetoothListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothListViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				89E986991E79753400350756 /* AppDelegate.swift */,
 				89E986AF1E7A805700350756 /* ViewController */,
 				89E986AB1E7975FB00350756 /* ChatCB.swift */,
+				89D377931E7E96A7006FF8B4 /* Constants.swift */,
 				89E9869D1E79753400350756 /* Main.storyboard */,
 				89E986A01E79753400350756 /* Assets.xcassets */,
 				89E986A21E79753400350756 /* LaunchScreen.storyboard */,
@@ -175,6 +178,7 @@
 				89E986AC1E7975FB00350756 /* ChatCB.swift in Sources */,
 				89E986B31E7A813E00350756 /* ChatViewController.swift in Sources */,
 				89E9869A1E79753400350756 /* AppDelegate.swift in Sources */,
+				89D377941E7E96A7006FF8B4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +342,7 @@
 				89E986AA1E79753400350756 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
