@@ -9,10 +9,13 @@
 import Foundation
 import CoreBluetooth
 
+/**
+ Classe para hostear uma sala de chat. É complementar à classe ChatRoomPeripheral.
+ */
 class ChatRoomHost: NSObject {
     
     fileprivate var peripheralManager: CBPeripheralManager?
-    let characteristicChat = CBMutableCharacteristic(
+    fileprivate let characteristicChat = CBMutableCharacteristic(
         type: CBUUID.characteristicChatMessage,
         properties: [.notify, .read, .write],
         value: nil,
@@ -32,53 +35,48 @@ class ChatRoomHost: NSObject {
 }
 
 extension ChatRoomHost: CBPeripheralManagerDelegate {
-
-    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
-        print("state: \(peripheral.state)")
-        
+    // Esses dois métodos são para criar os services e characteristics a respeito da sala de chat.
+    
+    internal func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
         let serviceUUID = CBUUID.serviceChat
         let service = CBMutableService(type: serviceUUID, primary: true)
         
         service.characteristics = [characteristicChat]
         peripheralManager!.add(service)
         
-        let advertisementData = [CBAdvertisementDataLocalNameKey: "Test Device"]
+        let advertisementData = [CBAdvertisementDataLocalNameKey: "Test Device"] // TODO: O usuário precisa poder escolher o nome da sala de chat, ao invés de ser sempre "Test Device"
         peripheralManager!.startAdvertising(advertisementData)
     }
     
-    func peripheralManagerDidStartAdvertising(_ peripheral: CBPeripheralManager, error: Error?) {
+    internal func peripheralManagerDidStartAdvertising(_ peripheral: CBPeripheralManager, error: Error?) {
         if let error = error {
-            print("Failed… error: \(error)")
+            print("Failed to create a chat room... Error: \(error)")
             return
         }
         
-        print("Succeeded!")
-        delegate!.chatLoadFinish()
+        print("Succeeded to create a chat room!")
+        delegate!.chatLoadFinish() // Terminamos de criar os services e characteristics, então está tudo pronto
     }
     
-    func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveRead request: CBATTRequest) {
+    // Delegate chamado quando alguém quer *ler* os dados do meu periférico
+    internal func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveRead request: CBATTRequest) {
         if request.characteristic.uuid.isEqual(CBUUID.characteristicChatMessage) {
-            print("lendo...")
-            // Set the correspondent characteristic's value
-            // to the request
             request.value = characteristicChat.value
             
-            // Respond to the request
             peripheralManager!.respond(to: request, withResult: .success)
         }
     }
     
-    func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {
+    // Delegate chamado quando alguém quer *escrever* os dados do meu periférico
+    internal func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {
         for request in requests {
             if request.characteristic.uuid.isEqual(CBUUID.characteristicChatMessage) {
-                print("escrevendo...")
-                // Set the request's value
-                // to the correspondent characteristic
                 characteristicChat.value = request.value
                 
                 delegate!.receivedMessage(String(data: request.value!, encoding: .utf8)!)
             }
         }
+        
         peripheralManager!.respond(to: requests[0], withResult: .success)
     }
 }

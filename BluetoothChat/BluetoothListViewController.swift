@@ -6,14 +6,6 @@
 //  Copyright © 2017 Bruno Macabeus Aquino. All rights reserved.
 //
 
-/*
- TODO:
- - na tableview, só deve listar o que realmente foi fala de chat
- - ao enviar mensagem, também precisa enviar o nome do usuário no iPhone
- - salas de chat podem ter nomes que, enventualmente, sejam modificadas
- - enviar fotos
- */
-
 import UIKit
 import CoreBluetooth
 

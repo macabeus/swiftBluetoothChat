@@ -20,8 +20,10 @@ class ChatViewController: UIViewController {
         super.viewDidLoad()
 
         if let chatRoomPeripheral = chatRoomPeripheral {
+            // se estiver conectado a uma sala de chat externa, apenas precisamos setar o delegate
             chatRoomPeripheral.delegate = self
         } else {
+            // caso contrário, vamos criar a nossa sala de chat aqui
             chatRoomHost = ChatRoomHost()
             chatRoomHost!.delegate = self
         }
@@ -31,6 +33,7 @@ class ChatViewController: UIViewController {
         let message = textFieldMessage.text!
         appendChatLog(message)
         
+        // TODO: Talvez seja bom usar polimorfismo para não precisar desse if
         if let chatRoomPeripheral = chatRoomPeripheral {
             chatRoomPeripheral.sendMessage(message)
         } else if let chatCBHostRoom = chatRoomHost {
@@ -50,6 +53,6 @@ extension ChatViewController: ChatRoomDelegate {
     }
     
     func chatLoadFinish() {
-        print("CHAT PRONTO PARA USAR!")
+        appendChatLog("CHAT PRONTO PARA USAR!")
     }
 }
